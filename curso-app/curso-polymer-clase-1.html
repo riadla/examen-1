@@ -1,0 +1,40 @@
+<link rel="import" href="curso-polymer-template.html">
+<link rel="import" href="../bower_components/marked-element/marked-element.html">
+<link rel="import" href="../components/hi-polymer.html">
+<link rel="import" href="../components/modal-message.html">
+<link rel="import" href="../components/reloj-actual.html">
+<link rel="import" href="../components/oferta-del-dia.html">
+
+<dom-module id="curso-polymer-clase-1">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+			
+			paper-card {
+				width: 100% !important;
+			}
+			.hrBottom {
+				border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+			}
+		</style>
+		
+			
+			<div class="hrBottom"></div>
+			
+			<hi-polymer></hi-polymer>
+			<modal-message msg="hijo aqui se mostrara el hijo" is-visible="true" btn="ocultar"></modal-message>
+			<reloj-actual btn-mostrar-reloj="Ocultar"></reloj-actual>
+			<oferta-del-dia>
+				
+			</oferta-del-dia>
+
+		</curso-polymer-template>
+	</template>
+	<script>
+        Polymer({
+            is: 'curso-polymer-clase-1'
+        });
+    </script>
+</dom-module>

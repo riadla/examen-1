@@ -1,0 +1,59 @@
+
+<dom-module id="reloj-actual">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+            hora-actual {
+                background-color: red;
+                color: white;
+                display:inline-block;
+                padding:1em;
+                font-size: sans-serif;
+            }
+            button {
+                margin:1em;
+            }
+        </style>
+        <div hidden="[[isVisible]]">
+            <hora-actual id="reloj"></hora-actual>
+        </div>
+        <div>
+            <button on-tap="toggle">[[btnMostrarReloj]]</button>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'reloj-actual',
+            properties: {
+                retardo: Object,
+                btnMostrarReloj: String,
+                isVisible : {
+                    type: Boolean,
+                    value: false
+                }
+            },
+            attached: function () {
+                this.actualizarReloj();
+            },
+            actualizarReloj: function () {
+                this.$.reloj.marcaHora();
+                this.retardo = this.async(this.actualizarReloj, 1000)
+            },
+            detached: function () {
+                this.cancelAsycn(this.retardo);
+            },
+            toggle : function() {
+                if(this.isVisible) {
+                    this.isVisible = false;
+                    this.btnMostrarReloj="Ocultar";
+                    this.detached;
+                } else {
+                    this.isVisible = true;
+                    this.btnMostrarReloj="Mostrar";
+                }
+            }
+        });
+    </script>
+</dom-module>

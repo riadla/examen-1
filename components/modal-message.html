@@ -1,0 +1,53 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<dom-module id="modal-message">
+    <template>
+        <style>
+            :host {
+                font-family: sans-serif;
+                background-color: #f5f5f5;
+            }
+            
+            button {
+                margin:1em;
+            }
+            [hidden] {
+                display: none;
+            }
+        </style>
+
+        <p hidden="[[!isVisible]]">
+            <span>[[msg]]</span>
+        </p>
+        <div>
+            <button on-tap="toggle">[[btn]]</button>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            is: 'modal-message',
+            properties : {
+                msg: String,
+                btn: String,
+                isVisible: {
+                    type: Boolean,
+                    value: false
+                }
+            },
+            show: function() {
+                this.isVisible = true;
+                this.btn = "Ocultar";
+            },
+            hide: function() {
+                this.isVisible = false;
+                this.btn = "Mostrar";
+            },
+            toggle: function() {
+                if(this.isVisible) {
+                    this.hide();
+                } else {
+                    this.show();
+                }
+            }
+        });
+    </script>
+</dom-module>

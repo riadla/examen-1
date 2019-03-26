@@ -1,0 +1,28 @@
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+
+<dom-module id="curso-polymer-template">
+	<template>
+		<style>
+			:host {
+				display: block;
+			}
+			
+			paper-card {
+				width: 100% !important;
+			}
+		</style>
+		<paper-card heading="{{cardTitle}}" image="" elevation="1" animated-shadow="true">
+			<div class="card-content">
+				<content></content>
+			</div>
+		</paper-card>
+	</template>
+	<script>
+        Polymer({
+            is: 'curso-polymer-template',
+            properties: {
+                cardTitle:String
+            }
+        });
+    </script>
+</dom-module>
